@@ -8,216 +8,334 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f6f9;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px;
+            line-height: 1.6;
             color: #333;
         }
 
         header {
-            background: #0d1117;
-            color: white;
-            padding: 60px 20px;
             text-align: center;
+            padding: 40px 0;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-        }
-
-        section {
-            max-width: 1000px;
-            margin: auto;
-            padding: 40px 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        h1 {
+            color: #1f4e79;
         }
 
         h2 {
-            color: #0d1117;
+            color: #1f4e79;
+            margin-top: 40px;
         }
 
-        ul {
-            line-height: 1.8;
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
         .btn {
             display: inline-block;
-            background: #238636;
+            background: #1f4e79;
             color: white;
+            padding: 12px 20px;
             text-decoration: none;
-            padding: 10px 18px;
             border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .skills span {
-            display: inline-block;
-            background: #eaf2ff;
-            color: #0969da;
-            padding: 8px 12px;
-            border-radius: 20px;
             margin: 5px;
         }
 
-        footer {
-            background: #0d1117;
-            color: white;
-            text-align: center;
+        .services,
+        .projects,
+        .results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
             padding: 20px;
+            background: #fafafa;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        ul {
+            padding-left: 20px;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Esteen Valdez</h1>
-    <p>QA Automation Consultant</p>
+    <header>
+        <h1>Esteen Valdez</h1>
+        <h3>QA Automation Consultant</h3>
 
-    <a
-        href="https://github.com/est-personal"
+        <a
+            href="https://github.com/est-personal"
             target="_blank"
             class="btn">
             View GitHub
-    </a>
-</header>
+        </a>
+    </header>
 
-<section>
-    <div class="card">
-        <h2>About Me</h2>
+    <section class="hero">
+        <h2>Automate Testing. Release Faster. Ship with Confidence.</h2>
+
         <p>
-            QA Automation Consultant specializing in Playwright,
-            JavaScript, API Testing, CI/CD, and Test Automation Framework Development.
-            I help teams improve software quality and accelerate releases through
-            scalable automation solutions.
+            Helping businesses deliver high-quality software through scalable
+            test automation, API testing, and CI/CD integration.
         </p>
-    </div>
 
-    <div class="card">
-        <h2>Technical Skills</h2>
+        #projects
+            View Projects
+    </a>
+        
+        #contact
+            Contact Me
+    </a>
+    <a
+        href="https://github.com/est-personal"
+        target="_blank"
+        class="btn">
+        GitHub
+    </a>
+    </section>
 
-        <div class="skills">
-            <span>Playwright</span>
-            <span>JavaScript</span>
-            <span>API Testing</span>
-            <span>GitHub Actions</span>
-            <span>Jenkins</span>
-            <span>Allure Reports</span>
-            <span>Selenium</span>
-            <span>SQL</span>
-            <span>Test Strategy</span>
-        </div>
-    </div>
+    <section id="about">
+        <h2>About Me</h2>
 
-    <div class="card">
+        <p>
+            Hi, I'm Esteen Valdez, a QA Automation Consultant specializing in
+            Playwright, Selenium, API automation, and CI/CD integration.
+        </p>
+
+        <p>
+            I help software teams reduce manual testing effort, improve software
+            quality by increasing test coverage, and deliver faster releases 
+            through modern and scalable automation solutions.
+        </p>
+    </section>
+
+    <section id="services">
         <h2>Services</h2>
 
-        <ul>
-            <li>Playwright Automation Framework Development</li>
-            <li>API Test Automation</li>
-            <li>Test Framework Architecture</li>
-            <li>CI/CD Integration</li>
-            <li>Automation Code Review</li>
-            <li>QA Process Improvement</li>
-        </ul>
-    </div>
+        <div class="services">
 
-    <div class="card">
-        <h2>Playwright Automation Framework using JavaScript</h2>
+            <div class="card">
+                <h3>Test Automation Framework Development</h3>
+                <ul>
+                    <li>Playwright</li>
+                    <li>Selenium</li>
+                    <li>Cypress</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>API Test Automation</h3>
+                <ul>
+                    <li>Playwright API Testing</li>
+                    <li>Postman</li>
+                    <li>REST API Validation</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>CI/CD Integration</h3>
+                <ul>
+                    <li>GitHub Actions</li>
+                    <li>Azure DevOps</li>
+                    <li>Jenkins Integration</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>QA Consulting</h3>
+                <ul>
+                    <li>QA Strategy and Process Improvement</li>
+                    <li>Automation Strategy</li>
+                    <li>Test Framework Architecture Review</li>
+                    <li>Test Automation Mentoring & Consulting</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+
+        <div class="projects">
+
+            <div class="card">
+                <h3>Playwright Automation Framework</h3>
+
+                <p>
+                    A scalable Playwright framework built using Page Object
+                    Model, Data-Driven Testing, Allure Reporting, Slack
+                    Notifications, and GitHub Actions.
+                </p>
+
+                <p>
+                    <strong>Tech Stack:</strong> Playwright, JavaScript,
+                    GitHub Actions, Allure, Slack
+                </p>
+
+                <a
+                    href="https://github.com/est-personal/playwright-using-javascript"
+                    target="_blank"
+                    class="btn">
+                    View Repository
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>API Automation Framework</h3>
+
+                <p>
+                    End-to-end API automation with request validation,
+                    authentication testing, reporting, and CI/CD integration.
+                </p>
+
+                <a
+                    href="https://github.com/est-personal/playwright-api"
+                    target="_blank"
+                    class="btn">
+                    View Repository
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="why-me">
+        <h2>Why Work With Me?</h2>
+
+        <ul>
+            <li>✅ Specializing in Playwright and modern test automation</li>
+            <li>✅ Experienced in Page Object Model and Data-Driven Testing</li>
+            <li>✅ CI/CD integration using GitHub Actions and Jenkins</li>
+            <li>✅ API Automation and End-to-End Testing</li>
+            <li>✅ Scalable framework design and best practices</li>
+            <li>✅ Focused on maintainable and reusable automation solutions</li>
+        </ul>
+    </section>
+
+    <section id="results">
+        <h2>Results</h2>
+
+        <div class="results">
+
+            <div class="card">
+                <h3>Faster Regression Testing</h3>
+                <p>
+                    Reduced regression execution times through automation and
+                    parallel test execution.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Automation Integration</h3>
+                <p>
+                    Integrated automated tests into CI/CD pipelines
+                    and other applications like reporting.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Improved Release Confidence</h3>
+                <p>
+                    Implemented automated UI and API validation for reliable
+                    software releases.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Scalable Test Architecture</h3>
+                <p>
+                    Designed reusable frameworks supporting long-term project
+                    growth and maintainability.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="availablity">
+        <h2>I am available for</h2>
+
+        <ul>
+            <li>✔ Freelance Test Automation Projects</li>
+            <li>✔ Short-Term Consulting Engagements</li>
+            <li>✔ Framework Setup & Modernization</li>
+            <li>✔ CI/CD Automation Integration</li>
+            <li>✔ QA Automation Mentoring</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Let's Work Together</h2>
 
         <p>
-            Scalable UI test automation framework using Playwright and JavaScript.
+            Whether you're looking to start automation from scratch, improve an
+            existing framework, or integrate testing into CI/CD pipelines,
+            I'm here to help.
         </p>
 
-        <ul>
-            <li>Page Object Model (POM)</li>
-            <li>Cross-browser testing</li>
-            <li>Data-driven testing</li>
-            <li>GitHub Actions Integration</li>
-            <li>Jenkins Integration</li>
-            <li>Allure Reporting</li>
-            <li>Slack Notifications</li>
-        </ul>
-
-        <a
-            href="https://github.com/est-personal/playwright-using-javascript"
-            target="_blank"
-            class="btn">
-        
-            View Repository
-        </a>
-
-        <br>
-
-        <a
-            href="https://est-personal.github.io/allure-report/"
-            target="_blank"
-            class="btn">
-            
-            View Latest Allure Report
-        </a>
-    </div>
-
-    <div class="card">
-        <h2>Case Study</h2>
-
-        <p><strong>Challenge:</strong></p>
         <p>
-            Manual regression testing was time-consuming and required significant effort before releases.
+            Let's discuss how I can help your team.
         </p>
 
-        <p><strong>Solution:</strong></p>
         <p>
-            Developed a Playwright automation framework with reusable Page Objects,
-            reporting, and CI/CD integration.
+            📧 esteen.personalwork@gmail.com
         </p>
 
-        <p><strong>Result:</strong></p>
-        <ul>
-            <li>Improved regression coverage</li>
-            <li>Reduced manual testing effort</li>
-            <li>Enabled automated execution in CI pipelines</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>Contact</h2>
+        <p>
+            💼 LinkedIn:
+            <a 
+                href="https://www.linkedin.com/in/esteenvaldez24/"
+                target="_blank">
+                linkedin.com/in/esteenvaldez24
+            </a>
+        </p>
 
         <p>
-            GitHub:
-            https://github.com/est-personal
+            🐙 GitHub:
+            <a 
+                href="https://github.com/est-personal"
+                target="_blank">
                 github.com/est-personal
             </a>
         </p>
+    </section>
+
+    <section style="text-align:center;padding-bottom:40px;">
+        <h2>Ready to Automate Your Testing?</h2>
 
         <p>
-            LinkedIn:
-            https://www.linkedin.com/in/esteenvaldez24/
-                linkedin
-            </a>
+            Let's build scalable, maintainable, and reliable
+            automation solutions together.
         </p>
 
-        <p>
-            Email:
-            esteen.personalwork@gmail.com
-        </p>
-    </div>
+        <a 
+            href="mailto:esteen.personalwork@gmail.com"
+           class="btn">
+           Contact Me
+        </a>
 </section>
-
-<footer>
-    © 2026 Esteen Valdez | QA Automation Consultant
-</footer>
+    
+    <footer>
+        <p>
+            © 2026 Esteen Valdez | QA Automation Consultant
+        </p>
+    </footer>
 
 </body>
 </html>
