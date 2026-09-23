@@ -40,8 +40,30 @@
       margin-top: 10px;
     }
 
+    .pass-rate {
+      color: #16a34a;
+    }
+    
+    .failed {
+      color: #dc2626;
+    }
+    
+    .flaky {
+      color: #f59e0b;
+    }
+
     #last-run {
-      font-size: 18px;
+      font-size: 20px;
+    }
+
+    #browser {
+      font-size: 20px;
+    }
+
+    #header-stats {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #666;
     }
 
     .chart {
@@ -59,6 +81,8 @@
 
 <h1>QA Automation Dashboard - Playwright JavaScript</h1>
 
+<div id="header-stats"></div>
+
 <p>
   <a 
     href="https://est-personal.github.io/allure-report/" 
@@ -75,28 +99,48 @@
   </div>
 
   <div class="card">
+    <div class="card-title">Tests Added</div>
+    <div class="card-value" id="tests-added">-</div>
+  </div>
+
+  <div class="card">
     <div class="card-title">Pass Rate</div>
-    <div class="card-value" id="pass-rate">-</div>
+    <div class="card-value pass-rate" id="pass-rate">-</div>
   </div>
 
   <div class="card">
     <div class="card-title">Failed</div>
-    <div class="card-value" id="failed">-</div>
+    <div class="card-value failed" id="failed">-</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Failure Rate</div>
+    <div class="card-value failed" id="failure-rate">-</div>
   </div>
 
   <div class="card">
     <div class="card-title">Flaky</div>
-    <div class="card-value" id="flaky">-</div>
+    <div class="card-value flaky" id="flaky">-</div>
   </div>
 
   <div class="card">
     <div class="card-title">Duration</div>
     <div class="card-value" id="duration">-</div>
   </div>
+
+  <div class="card">
+    <div class="card-title">Avg Duration</div>
+    <div class="card-value" id="avg-duration"></div>
+  </div>
   
   <div class="card">
-    <div class="card-title">Runs</div>
+    <div class="card-title">Execution</div>
     <div class="card-value" id="runs">-</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Browser</div>
+    <div class="card-value" id="browser">-</div>
   </div>
 
   <div class="card">
@@ -152,6 +196,13 @@ async function loadMetrics() {
     const latest =
       history[history.length - 1];
 
+    const avgDurationSeconds =
+      history.reduce(
+        (sum, h) =>
+          sum + (h.durationSeconds || 0),
+        0
+      ) / history.length;
+
     const previous =
       history.length > 1
         ? history[history.length - 2]
@@ -159,25 +210,80 @@ async function loadMetrics() {
 
     const totalDelta =
       previous
-        ? latest.total - previous.total
+        ? Math.max(
+            latest.total - previous.total,
+            0
+          )
         : 0;
+
+    const failureRate =
+      latest.total === 0
+        ? 0
+        : (
+            latest.failed /
+            latest.total
+          ) * 100;
+
+    const passTrend =
+      previous &&
+      latest.passRate >
+      previous.passRate
+        ? '▲'
+        : previous &&
+          latest.passRate <
+          previous.passRate
+        ? '▼'
+        : '■';
+
+    const avgMinutes =
+      Math.floor(
+        avgDurationSeconds / 60
+      );
+    
+    const avgSeconds =
+      Math.round(
+        avgDurationSeconds % 60
+      );
+        
+    document.getElementById(
+      'header-stats'
+    ).innerHTML =
+    `
+    <b>Last Updated:</b> ${latest.date}
+    &nbsp; | &nbsp;
+    <b>Framework:</b> Playwright
+    &nbsp; | &nbsp;
+    <b>Browser:</b> ${latest.browser || 'chromium'}
+    &nbsp; | &nbsp;
+    <b>Executions:</b> ${history.length}
+    `;
 
     document.getElementById(
       'total-tests'
     ).textContent =
-      totalDelta === 0
-        ? `${latest.total}`
-        : `${latest.total} (${totalDelta >= 0 ? '+' : ''}${totalDelta})`;
+      latest.total;
+
+    document.getElementById(
+      'tests-added'
+    ).textContent =
+      totalDelta >= 1
+        ? `+${totalDelta}`
+        : '-';
 
     document.getElementById(
       'pass-rate'
     ).textContent =
-      `${latest.passRate}%`;
+      `${latest.passRate}% ${passTrend}`;
 
     document.getElementById(
       'failed'
     ).textContent =
       latest.failed;
+
+    document.getElementById(
+      'failure-rate'
+    ).textContent =
+      `${failureRate.toFixed(2)}%`;
 
     document.getElementById(
       'flaky'
@@ -196,9 +302,19 @@ async function loadMetrics() {
           : '-';
 
     document.getElementById(
+      'avg-duration'
+    ).textContent =
+      `${avgMinutes}m ${avgSeconds}s`;
+
+    document.getElementById(
       'runs'
     ).textContent =
       history.length;
+
+    document.getElementById(
+      'browser'
+    ).textContent =
+      latest.browser || 'chromium';
 
     document.getElementById(
       'last-run'
