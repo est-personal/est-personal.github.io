@@ -187,10 +187,13 @@ async function loadMetrics() {
     document.getElementById(
       'duration'
     ).textContent =
-      latest.duration ||
-      `${Math.round(
-        latest.durationSeconds / 60
-      )}m`;
+      latest.duration
+        ? latest.duration
+        : latest.durationSeconds
+          ? `${Math.round(
+              latest.durationSeconds / 60
+            )}m`
+          : '-';
 
     document.getElementById(
       'runs'
