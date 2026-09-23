@@ -14,6 +14,36 @@
       text-align: center;
     }
 
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 20px 0 40px;
+    }
+    
+    .card {
+      background: #f5f5f5;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    
+    .card-title {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .card-value {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #last-run {
+      font-size: 18px;
+    }
+
     .chart {
       margin-bottom: 50px;
     }
@@ -27,7 +57,54 @@
 
 <body>
 
-<h1>QA Automation Dashboard</h1>
+<h1>QA Automation Dashboard - Playwright JavaScript</h1>
+
+<p>
+  <a 
+    href="https://est-personal.github.io/allure-report/" 
+    target="_blank">
+    📊 Open Allure Report
+  </a>
+</p>
+
+<div class="cards">
+
+  <div class="card">
+    <div class="card-title">Total Tests</div>
+    <div class="card-value" id="total-tests">-</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Pass Rate</div>
+    <div class="card-value" id="pass-rate">-</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Failed</div>
+    <div class="card-value" id="failed">-</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Flaky</div>
+    <div class="card-value" id="flaky">-</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Duration</div>
+    <div class="card-value" id="duration">-</div>
+  </div>
+  
+  <div class="card">
+    <div class="card-title">Runs</div>
+    <div class="card-value" id="runs">-</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Last Run</div>
+    <div class="card-value" id="last-run">-</div>
+  </div>
+
+</div>
 
 <h2>Pass Rate Trend</h2>
 
@@ -49,9 +126,95 @@
 
 <div class="chart">
   <img
-    src="duration-trend.png.png"
+    src="duration-trend.png"
     alt="Duration Rate Trend">
 </div>
+
+<h2>Test Count Trend</h2>
+
+<div class="chart">
+  <img
+    src="test-count-trend.png"
+    alt="Test Count Trend">
+</div>
+
+<script>
+async function loadMetrics() {
+
+  try {
+
+    const response =
+      await fetch('history.json');
+
+    const history =
+      await response.json();
+
+    const latest =
+      history[history.length - 1];
+
+    const previous =
+      history.length > 1
+        ? history[history.length - 2]
+        : null;
+
+    const totalDelta =
+      previous
+        ? latest.total - previous.total
+        : 0;
+
+    document.getElementById(
+      'total-tests'
+    ).textContent =
+      totalDelta === 0
+        ? `${latest.total}`
+        : `${latest.total} (${totalDelta >= 0 ? '+' : ''}${totalDelta})`;
+
+    document.getElementById(
+      'pass-rate'
+    ).textContent =
+      `${latest.passRate}%`;
+
+    document.getElementById(
+      'failed'
+    ).textContent =
+      latest.failed;
+
+    document.getElementById(
+      'flaky'
+    ).textContent =
+      latest.flaky;
+
+    document.getElementById(
+      'duration'
+    ).textContent =
+      latest.duration ||
+      `${Math.round(
+        latest.durationSeconds / 60
+      )}m`;
+
+    document.getElementById(
+      'runs'
+    ).textContent =
+      history.length;
+
+    document.getElementById(
+      'last-run'
+    ).textContent =
+      latest.date;
+
+  } catch (error) {
+
+    console.error(
+      'Unable to load history.json',
+      error
+    );
+
+  }
+
+}
+
+loadMetrics();
+</script>
 
 </body>
 </html>
