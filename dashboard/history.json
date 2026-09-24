@@ -13,13 +13,13 @@
   {
     "date": "2026-09-24",
     "total": 485,
-    "passed": 484,
+    "passed": 481,
     "failed": 0,
-    "flaky": 1,
+    "flaky": 4,
     "skipped": 0,
     "passRate": 100,
-    "duration": "6m 23s",
-    "durationSeconds": 383,
+    "duration": "5m 22s",
+    "durationSeconds": 322,
     "browser": "chromium"
   }
 ]
