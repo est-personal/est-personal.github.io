@@ -12,14 +12,50 @@
   },
   {
     "date": "2026-09-24",
+    "total": 46,
+    "passed": 46,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "passRate": 100,
+    "duration": "",
+    "durationSeconds": 0,
+    "browser": "chromium"
+  },
+  {
+    "date": "2026-09-24",
+    "total": 46,
+    "passed": 46,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "passRate": 100,
+    "duration": "",
+    "durationSeconds": 0,
+    "browser": "chromium"
+  },
+  {
+    "date": "2026-09-25",
+    "total": 46,
+    "passed": 46,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "passRate": 100,
+    "duration": "",
+    "durationSeconds": 0,
+    "browser": "chromium"
+  },
+  {
+    "date": "2026-09-25",
     "total": 485,
     "passed": 481,
     "failed": 0,
     "flaky": 4,
     "skipped": 0,
     "passRate": 100,
-    "duration": "5m 22s",
-    "durationSeconds": 322,
+    "duration": "6m 33s",
+    "durationSeconds": 393,
     "browser": "chromium"
   }
 ]
