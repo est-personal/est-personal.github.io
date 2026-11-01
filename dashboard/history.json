@@ -47,15 +47,15 @@
     "browser": "chromium"
   },
   {
-    "date": "2026-10-18",
+    "date": "2026-11-01",
     "total": 485,
-    "passed": 482,
+    "passed": 484,
     "failed": 0,
-    "flaky": 3,
+    "flaky": 1,
     "skipped": 0,
     "passRate": 100,
-    "duration": "6m 33s",
-    "durationSeconds": 393,
+    "duration": "6m 14s",
+    "durationSeconds": 374,
     "browser": "chromium"
   }
 ]
